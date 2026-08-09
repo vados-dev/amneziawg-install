@@ -289,7 +289,7 @@ function installAmneziaWG() {
 		dnf config-manager --set-enabled crb
 		dnf install -y epel-release
 		dnf copr enable -y tigro/amneziawg
-		dnf install -y amneziawg-dkms amneziawg-tools qrencode iptables
+		dnf install -y kmod-amneziawg amneziawg-tools qrencode iptables
 	fi
 
 	SERVER_AWG_CONF="${AMNEZIAWG_DIR}/${SERVER_AWG_NIC}.conf"
@@ -578,7 +578,7 @@ function uninstallAmneziaWG() {
 			dnf remove -y $amnezia_rpms
 			dnf copr disable -y tigro/amneziawg
 		elif [[ ${OS} == 'centos' ]] || [[ ${OS} == 'almalinux' ]] || [[ ${OS} == 'rocky' ]]; then
-			dnf remove -y amneziawg-dkms amneziawg-tools
+			dnf remove -y kmod-amneziawg amneziawg-tools
 			dnf copr disable -y tigro/amneziawg
 		fi
 
